@@ -71,7 +71,7 @@ class FlutterTagging<T extends Taggable> extends StatefulWidget {
   /// controller, and expected to return some animation that uses the controller
   /// to display the suggestion box.
   final dynamic Function(BuildContext, Widget, AnimationController)
-      transitionBuilder;
+  transitionBuilder;
 
   /// The configuration of suggestion box.
   final SuggestionsBoxConfiguration suggestionsBoxConfiguration;
@@ -200,24 +200,24 @@ class _FlutterTaggingState<T extends Taggable>
           animationStart: widget.animationStart,
           animationDuration: widget.animationDuration,
           autoFlipDirection:
-              widget.suggestionsBoxConfiguration.autoFlipDirection,
+          widget.suggestionsBoxConfiguration.autoFlipDirection,
           direction: widget.suggestionsBoxConfiguration.direction,
           hideSuggestionsOnKeyboardHide:
-              widget.suggestionsBoxConfiguration.hideSuggestionsOnKeyboardHide,
+          widget.suggestionsBoxConfiguration.hideSuggestionsOnKeyboardHide,
           keepSuggestionsOnLoading:
-              widget.suggestionsBoxConfiguration.keepSuggestionsOnLoading,
+          widget.suggestionsBoxConfiguration.keepSuggestionsOnLoading,
           keepSuggestionsOnSuggestionSelected: widget
               .suggestionsBoxConfiguration.keepSuggestionsOnSuggestionSelected,
           suggestionsBoxController:
-              widget.suggestionsBoxConfiguration.suggestionsBoxController,
+          widget.suggestionsBoxConfiguration.suggestionsBoxController,
           suggestionsBoxDecoration:
-              widget.suggestionsBoxConfiguration.suggestionsBoxDecoration,
+          widget.suggestionsBoxConfiguration.suggestionsBoxDecoration,
           suggestionsBoxVerticalOffset:
-              widget.suggestionsBoxConfiguration.suggestionsBoxVerticalOffset,
+          widget.suggestionsBoxConfiguration.suggestionsBoxVerticalOffset,
           errorBuilder: widget.errorBuilder,
           transitionBuilder: widget.transitionBuilder,
           loadingBuilder: (context) =>
-              widget.loadingBuilder ??
+          widget.loadingBuilder ??
               SizedBox(
                 height: 3.0,
                 child: LinearProgressIndicator(),
@@ -271,26 +271,20 @@ class _FlutterTaggingState<T extends Taggable>
                 },
                 child: Builder(
                   builder: (context) {
-                    if (_additionItem != null && _additionItem == item) {
-                      return conf.additionWidget;
-                    } else {
-                      return SizedBox(width: 0);
-                    }
+                    return SizedBox(width: 0);
                   },
                 ),
               ),
             );
           },
           onSuggestionSelected: (suggestion) {
-            if (_additionItem != suggestion) {
-              setState(() {
-                widget.initialItems.add(suggestion);
-              });
-              if (widget.onChanged != null) {
-                widget.onChanged();
-              }
-              _textController.clear();
+            setState(() {
+              widget.initialItems.add(suggestion);
+            });
+            if (widget.onChanged != null) {
+              widget.onChanged();
             }
+            _textController.clear();
           },
         ),
         Wrap(
